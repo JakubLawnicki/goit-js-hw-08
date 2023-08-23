@@ -18,8 +18,8 @@ player.on(
   }, 1000)
 );
 
-player.on('ended', e => {
-  localStorage.removeItem('videoplayer-current-time');
+player.on('ended', () => {
+  localStorage.setItem('videoplayer-current-time', 0);
 });
 
 window.addEventListener('load', () =>
