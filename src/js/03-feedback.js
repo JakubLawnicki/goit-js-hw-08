@@ -15,14 +15,24 @@ function createStorage() {
 form.addEventListener('input', throttle(createStorage, 500));
 
 window.addEventListener('load', () => {
-  parsedObj = JSON.parse(localStorage.getItem('feedback-form-state'));
-  emailInput.value = parsedObj.email;
-  messageInput.value = parsedObj.message;
+  if (localStorage.getItem('feedback-form-state')) {
+    parsedObj = JSON.parse(localStorage.getItem('feedback-form-state'));
+    emailInput.value = parsedObj.email;
+    messageInput.value = parsedObj.message;
+  } else {
+    emailInput.value = '';
+    messageInput.value = '';
+  }
 });
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  localStorage.removeItem('feedback-form-state');
-  (emailInput.value = ''), (messageInput.value = '');
-  console.log(parsedObj);
+  if (emailInput.value === '' || messageInput.value === '') {
+    alert('All fields must be filled!');
+  } else {
+    console.log(parsedObj);
+    localStorage.removeItem('feedback-form-state');
+    emailInput.value = '';
+    messageInput.value = '';
+  }
 });

@@ -19,7 +19,7 @@ player.on(
 );
 
 player.on('ended', () => {
-  localStorage.setItem('videoplayer-current-time', 0);
+  player.setCurrentTime(0);
 });
 
 window.addEventListener('load', () =>

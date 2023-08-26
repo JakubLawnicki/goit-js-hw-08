@@ -34,9 +34,9 @@ function clickImage(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
   }
-
-  const lightbox = new SimpleLightbox('.gallery li a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
 }
+
+const lightbox = new SimpleLightbox('.gallery li a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
